@@ -28,7 +28,7 @@ function expand(e) {
 }
 
 faqIcons.forEach((faqIcon) => {
-	question.setAttribute('aria-expanded', false)
+	faqIcon.setAttribute('aria-expanded', false)
 	faqIcon.addEventListener('click', expand)
 })
 
