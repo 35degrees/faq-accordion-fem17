@@ -7,7 +7,6 @@ function expand(e) {
 	const thisIcon = e.target
 	const parentElement = thisIcon.parentElement
 	const sharedElement = parentElement.childNodes[2].nextElementSibling
-	console.log({ sharedElement })
 
 	let isSelected = sharedElement.classList.contains('selected')
 	const parentAdjacent = thisIcon.parentElement.nextElementSibling
@@ -19,17 +18,21 @@ function expand(e) {
 
 	if (isSelected) {
 		sharedElement.classList.remove('selected')
+
 		parentAdjacent.classList.remove('selected')
 	} else {
 		sharedElement.classList.add('selected')
+		sharedElement.setAttribute('aria-expanded', true)
 		parentAdjacent.classList.add('selected')
 	}
 }
 
 faqIcons.forEach((faqIcon) => {
+	question.setAttribute('aria-expanded', false)
 	faqIcon.addEventListener('click', expand)
 })
 
 faqQuestions.forEach((question) => {
+	question.setAttribute('aria-hidden', true)
 	question.addEventListener('click', expand)
 })
